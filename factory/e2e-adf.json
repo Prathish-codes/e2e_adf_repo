@@ -1,0 +1,15 @@
+{
+	"name": "e2e-adf",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "1e9bb822-de6a-4ea1-a8e9-43849ede3b63",
+		"tenantId": "474565c1-bca4-4295-a2f5-b0c7dbf2591c"
+	}
+}
