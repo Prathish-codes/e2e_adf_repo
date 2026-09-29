@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "Select *\nfrom ctrl.table_config\nwhere is_active=1 and  source_system='@{pipeline().parameters.Source_system}'",
+							"value": "Select table_id\nfrom ctrl.table_config\nwhere is_active=1 and  source_system='@{pipeline().parameters.Source_system}'",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
