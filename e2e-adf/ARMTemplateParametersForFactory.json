@@ -22,6 +22,15 @@
 		},
 		"LS_key_vault_properties_typeProperties_baseUrl": {
 			"value": "https://caresynckeyvault12.vault.azure.net/"
+		},
+		"ls_AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "caresync-server12.database.windows.net"
+		},
+		"ls_AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "sql-db-caresync"
+		},
+		"ls_AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "prathish"
 		}
 	}
 }
