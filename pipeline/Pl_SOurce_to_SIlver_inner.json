@@ -123,8 +123,6 @@
 			{
 				"name": "landing_to_Bronze",
 				"type": "DatabricksNotebook",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Source_to_landing ingestion",
@@ -142,7 +140,21 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/cresync-repo/caresync-adb-repo/landing_to_bronze"
+					"notebookPath": "/cresync-repo/caresync-adb-repo/landing_to_bronze",
+					"baseParameters": {
+						"landing_timestamp": {
+							"value": "\n@variables('Start_time')",
+							"type": "Expression"
+						},
+						"source_system": {
+							"value": "\n@activity('Read table Details').output.firstRow.source_system",
+							"type": "Expression"
+						},
+						"table_name": {
+							"value": "@activity('Read table Details').output.firstRow.bronze_table",
+							"type": "Expression"
+						}
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "LS_AzureDatabricks1",
@@ -152,8 +164,6 @@
 			{
 				"name": "Bronze_to_landing",
 				"type": "DatabricksNotebook",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "landing_to_Bronze",
@@ -171,7 +181,17 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/cresync-repo/caresync-adb-repo/landing_to_bronze"
+					"notebookPath": "/cresync-repo/caresync-adb-repo/landing_to_bronze",
+					"baseParameters": {
+						"landing_timestamp": {
+							"value": "@variables('Start_time')",
+							"type": "Expression"
+						},
+						"table_name": {
+							"value": "@activity('Read table Details').output.firstRow.silver_table",
+							"type": "Expression"
+						}
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "LS_AzureDatabricks1",
