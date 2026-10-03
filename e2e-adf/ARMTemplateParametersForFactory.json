@@ -31,6 +31,9 @@
 		},
 		"ls_AzureSqlDatabase1_properties_typeProperties_userName": {
 			"value": "prathish"
+		},
+		"LS_AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"value": "0928-153405-dsg2dorf"
 		}
 	}
 }
