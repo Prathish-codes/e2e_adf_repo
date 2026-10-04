@@ -180,7 +180,7 @@
 											{
 												"type": "Query",
 												"text": {
-													"value": "@INSERT into ctrl.audit_log\n(adf_run_id, table_id, stage, status, start_time)\nVALUES\n('@{pipeline().parameters.adf_run_id}', @{item().table_id}, 'SOURCE_TO_SILVER', 'IN_PROGRESS', SYSUTCDATETIME())",
+													"value": "INSERT into ctrl.audit_log\n(adf_run_id, table_id, stage, status, start_time)\nVALUES\n('@{pipeline().parameters.adf_run_id}', @{item().table_id}, 'SOURCE_TO_SILVER', 'IN_PROGRESS', SYSUTCDATETIME())",
 													"type": "Expression"
 												}
 											}
@@ -422,7 +422,7 @@
 						}
 					},
 					{
-						"name": "Bronze_to_landing",
+						"name": "Bronze_to_Silver",
 						"type": "DatabricksNotebook",
 						"dependsOn": [
 							{
@@ -441,7 +441,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"notebookPath": "/cresync-repo/caresync-adb-repo/landing_to_bronze",
+							"notebookPath": "/cresync-repo/caresync-adb-repo/Bronze_to_Silver",
 							"baseParameters": {
 								"landing_timestamp": {
 									"value": "@variables('Start_time')",
@@ -463,7 +463,7 @@
 						"type": "Script",
 						"dependsOn": [
 							{
-								"activity": "Bronze_to_landing",
+								"activity": "Bronze_to_Silver",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -486,7 +486,7 @@
 								{
 									"type": "Query",
 									"text": {
-										"value": "UPDATE ctrl.audit_log\nSET\n    status = 'SUCCESS',\n    end_time = SYSUTCDATETIME(),\n    records_written=@{activity('Bronze_to_landing').output.runOutput}\nWHERE\n    adf_run_id = '@{pipeline().parameters.adf_run_id}'\n    AND table_id = @{pipeline().parameters.table_id};",
+										"value": "UPDATE ctrl.audit_log\nSET\n    status = 'SUCCESS',\n    end_time = SYSUTCDATETIME(),\n    records_written = @{activity('Bronze_to_Silver').output.runOutput}\nWHERE\n    adf_run_id = '@{pipeline().parameters.adf_run_id}'\n    AND table_id = @{pipeline().parameters.table_id};",
 										"type": "Expression"
 									}
 								}
