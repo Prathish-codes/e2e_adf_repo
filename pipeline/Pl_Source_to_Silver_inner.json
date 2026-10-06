@@ -256,7 +256,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@not(equals(activity('Read table Details').output.firstRow,'Full' ))",
+						"value": "@not(\n    equals(\n        toUpper(activity('Read table Details').output.firstRow.load_type),\n        'FULL'\n    )\n)",
 						"type": "Expression"
 					},
 					"ifTrueActivities": [
@@ -276,7 +276,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "\nSelect watermark_value\nfrom ctrl.watermark\nwhere table_id=@{pipeline().parameters.table_id}",
+										"value": "Select watermark_value\nfrom ctrl.watermark\nwhere table_id=@{pipeline().parameters.table_id}",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
