@@ -50,7 +50,14 @@
 			{
 				"name": "landing_to_Bronze",
 				"type": "DatabricksNotebook",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Switch1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -72,6 +79,10 @@
 						},
 						"table_name": {
 							"value": "@activity('Read table Details').output.firstRow.bronze_table_name",
+							"type": "Expression"
+						},
+						"source_file_format": {
+							"value": "@coalesce(activity('Read table Details').output.firstRow.source_file_format,'')",
 							"type": "Expression"
 						}
 					}
