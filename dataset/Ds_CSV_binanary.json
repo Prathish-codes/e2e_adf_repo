@@ -23,7 +23,7 @@
 					"type": "Expression"
 				},
 				"fileSystem": {
-					"value": "Source1",
+					"value": "source1",
 					"type": "Expression"
 				}
 			}
