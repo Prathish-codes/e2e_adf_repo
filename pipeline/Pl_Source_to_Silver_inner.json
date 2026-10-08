@@ -430,7 +430,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"folder": {
-													"value": "@activity('Read table Details').output.firstRow.source_path",
+													"value": "insurance_providers",
 													"type": "Expression"
 												},
 												"container": "source"
