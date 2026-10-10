@@ -23,7 +23,7 @@
 					"type": "Expression"
 				},
 				"fileSystem": {
-					"value": "source1",
+					"value": "@dataset().container",
 					"type": "Expression"
 				}
 			}
