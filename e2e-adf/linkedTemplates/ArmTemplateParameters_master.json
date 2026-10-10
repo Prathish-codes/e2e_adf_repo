@@ -11,6 +11,9 @@
 		"LS_ADLS_properties_typeProperties_url": {
 			"value": "https://e2eproject.dfs.core.windows.net/"
 		},
+		"LS_AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"value": "0928-153405-dsg2dorf"
+		},
 		"LS_PostgreSQL_properties_typeProperties_server": {
 			"value": "ep-purple-scene-b33qhld9-pooler.c-4.ap-southeast-1.aws.neon.tech"
 		},
@@ -31,9 +34,6 @@
 		},
 		"ls_AzureSqlDatabase1_properties_typeProperties_userName": {
 			"value": "prathish"
-		},
-		"LS_AzureDatabricks1_properties_typeProperties_existingClusterId": {
-			"value": "0928-153405-dsg2dorf"
 		},
 		"containerUri": {
 			"value": ""
