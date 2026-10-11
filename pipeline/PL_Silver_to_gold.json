@@ -194,7 +194,8 @@
 							],
 							"userProperties": [],
 							"typeProperties": {
-								"message": "the gold notebook failed"
+								"message": "the gold notebook failed",
+								"errorCode": "500"
 							}
 						}
 					]
